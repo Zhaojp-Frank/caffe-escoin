@@ -1,4 +1,6 @@
-#include <math_functions.h>  // CUDA's, not caffe's, for fabs, signbit
+//#include <math_functions.h>  // CUDA's, not caffe's, for fabs, signbit
+#include <device_types.h>  // CUDA's, not caffe's, for fabs, signbit
+#include <cuda_runtime_api.h>  // CUDA's, not caffe's, for fabs, signbit
 #include <thrust/device_vector.h>
 #include <thrust/functional.h>  // thrust::plus
 #include <thrust/reduce.h>
@@ -253,7 +255,7 @@ __global__ void sconv_batch_base(const int *rowptr, const int *colidx, const Dty
 #define VLEN 32
 #define OC_BLOCK 1
 #define DIVIDE_INTO(x,y) ((x + y - 1)/y)
-#define MIN(x,y) ((x < y)? x : y)
+//#define MIN(x,y) ((x < y)? x : y)
 #define SHMEM_SIZE 1024
 #define ITER (SHMEM_SIZE/BLOCK_SIZE)
 #define REG_BLOCK_SIZE 32 // number of registers per warp
